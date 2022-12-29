@@ -7,9 +7,12 @@ import { mouse } from "./mouse.mjs";
 import { CommonZombie, zombies } from "./characters/common_zombie.mjs";
 import { fastZombie } from "./characters/fast_zombie.mjs";
 import { tankZombie } from "./characters/tank_zombie.mjs";
+import { ar, pistol } from "./guns/guns.mjs";
+import { superZombie } from "./characters/super_zombie.mjs";
 
 let ID;
 if (canvas && ctx) {
+  player.weapon = pistol;
   gameLoop();
   player.controls(true);
   window.addEventListener("mousedown", clickDHandler);
@@ -53,7 +56,7 @@ function gameLoop() {
     cancelAnimationFrame(ID);
   }
 }
-let zombies_Name = ['common','fast','tank']
+let zombies_Name = ['common','fast','tank','super']
 let stageNumber = 1;
 function stageLoop() {
   if (zombies.length === 1) {
@@ -76,6 +79,9 @@ function stageLoop() {
           break;
         case 'tank':
           zombies.push(new tankZombie(positions[0][randomX], positions[1][randomY]))
+          break;
+        case 'super':
+          zombies.push(new superZombie(positions[0][randomX], positions[1][randomY]))
           break;
       }
     }

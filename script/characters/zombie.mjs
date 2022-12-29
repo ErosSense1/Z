@@ -40,9 +40,9 @@ class Zombie {
   stats() {
     ctx.fillStyle = "blue";
     ctx.fillText(this.name, this.pos.x, this.pos.y);
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "yellow";
     ctx.fillText("health: " + this.health, this.pos.x, this.pos.y + 10);
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "yellow";
     ctx.fillText("damage: " + this.damage, this.pos.x, this.pos.y + 20);
   }
 }

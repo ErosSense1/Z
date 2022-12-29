@@ -1,13 +1,12 @@
-import { pistol } from "../guns/guns.mjs";
 import { Bullet } from "../guns/setup/gun.mjs";
 import { canvas, ctx } from "../important/data.mjs";
 import { mouse } from "../mouse.mjs";
 
 class Player {
   it;
-  constructor(gun) {
+  constructor() {
     this.health = 100;
-    this.weapon = gun;
+    this.weapon = undefined
     this.speed = {
       x: 0,
       y: 0,
@@ -48,6 +47,18 @@ class Player {
           case "d":
             this.speed.x = 1;
             break;
+          case "W":
+            this.speed.y = -1;
+            break;
+          case "S":
+            this.speed.y = 1;
+            break;
+          case "A":
+            this.speed.x = -1;
+            break;
+          case "D":
+            this.speed.x = 1;
+            break;
         }
       });
 
@@ -63,6 +74,18 @@ class Player {
             this.speed.x = 0;
             break;
           case "d":
+            this.speed.x = 0;
+            break;
+          case "W":
+            this.speed.y = 0;
+            break;
+          case "S":
+            this.speed.y = 0;
+            break;
+          case "A":
+            this.speed.x = 0;
+            break;
+          case "D":
             this.speed.x = 0;
             break;
         }
@@ -122,7 +145,7 @@ class Player {
     ctx.fillText("health: " + Math.floor(this.health), this.pos.x, this.pos.y + 50);
   }
 }
-let player = new Player(pistol);
+let player = new Player();
 function clickDHandler() {
   player.it = setInterval(() => {
     player.shoot();
