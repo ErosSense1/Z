@@ -42,11 +42,13 @@ function gameLoop() {
   // draws player
   player.update();
   player.stats();
+  player.currency();
 
   // draws enemies
   zombies[0].pos.x = undefined;
   zombies.forEach((zombie, i) => {
     if (zombie.health <= 0) {
+      player.coins += zombie.coins;
       zombies.splice(i, 1);
       console.log(zombies);
     }

@@ -1,10 +1,11 @@
 import { Bullet } from "../guns/setup/gun.mjs";
-import { canvas, ctx } from "../important/data.mjs";
+import { canvas, coin, ctx } from "../important/data.mjs";
 import { mouse } from "../mouse.mjs";
 
 class Player {
   it;
   constructor() {
+    this.coins = 0
     this.health = 100;
     this.weapon = undefined
     this.speed = {
@@ -143,6 +144,9 @@ class Player {
     );
     ctx.fillStyle = "yellow";
     ctx.fillText("health: " + Math.floor(this.health), this.pos.x, this.pos.y + 50);
+  }
+  currency(){
+    coin.innerHTML = 'Coins: ' + this.coins
   }
 }
 let player = new Player();

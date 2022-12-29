@@ -8,15 +8,15 @@ class CommonZombie extends Zombie {
     this.damage = 10;
     this.attackSpeed = 100;
     this.velocity = 1;
+    this.coins = 10;
     this.color = "lightgreen";
   }
 }
 
-
 let randomX = Math.floor(Math.random() * 2);
 let randomY = Math.floor(Math.random() * 2);
 let zombies = [
-    new CommonZombie(),
-    new CommonZombie(positions[0][randomX], positions[1][randomY]),
-  ];
-export { CommonZombie,zombies };
+  new CommonZombie(),
+  new CommonZombie(positions[0][randomX], positions[1][randomY]),
+];
+export { CommonZombie, zombies };

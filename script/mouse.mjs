@@ -6,6 +6,7 @@ class Mouse {
     y: 0,
   };
   visualize() {
+    ctx.fillStyle = 'red'
     ctx.fillRect(this.pos.x - 2.5, this.pos.y - 2.5, 5, 5);
   }
   update() {

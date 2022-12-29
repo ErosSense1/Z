@@ -8,6 +8,7 @@ class Zombie {
   name = undefined;
   velocity = undefined;
   color = undefined;
+  coins = undefined;
   constructor(x, y) {
     this.width = 50;
     this.height = 50;
