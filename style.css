@@ -1,8 +1,11 @@
-b{
+#stage{
     position: absolute;
     font-size: 50px;
     left: 50%;
     top: 7.5%;
     transform: translate(-50%, -50%);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#coins{
+    left: 0% !important;
 }
