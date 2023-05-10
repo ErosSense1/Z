@@ -1,7 +1,8 @@
 import { ctx } from "../../important/data.mjs";
 
 class Bullet {
-  constructor(x, y, sx, sy) {
+  constructor(x, y, sx, sy,name) {
+    this.name = name;
     this.pos = {
       x: x,
       y: y,

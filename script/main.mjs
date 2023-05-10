@@ -1,5 +1,5 @@
 import { positions } from "./characters/zombie.mjs";
-import { clickUHandler, clickDHandler, player } from "./characters/player.mjs";
+import { clickUHandler, clickDHandler, player, WeaponChange } from "./characters/player.mjs";
 import { bulletCollision, zombieCollision } from "./important/collisions.mjs";
 import { connect } from "./important/config.mjs";
 import { canvas, ctx, stage } from "./important/data.mjs";
@@ -7,16 +7,17 @@ import { mouse } from "./mouse.mjs";
 import { CommonZombie, zombies } from "./characters/common_zombie.mjs";
 import { fastZombie } from "./characters/fast_zombie.mjs";
 import { tankZombie } from "./characters/tank_zombie.mjs";
-import { ar, pistol } from "./guns/guns.mjs";
+import { ar, pistol, rpg } from "./guns/guns.mjs";
 import { superZombie } from "./characters/super_zombie.mjs";
 
 let ID;
 if (canvas && ctx) {
-  player.weapon = pistol;
+  player.weapon = rpg;
   gameLoop();
   player.controls(true);
   window.addEventListener("mousedown", clickDHandler);
   window.addEventListener("mouseup", clickUHandler);
+  window.addEventListener("keydown",WeaponChange)
 }
 function gameLoop() {
   //clear screen
@@ -67,6 +68,7 @@ function gameLoop() {
   ID = requestAnimationFrame(gameLoop);
   if (player.health < 1) {
     console.log(ID);
+    alert("You Lose!")
     cancelAnimationFrame(ID);
   }
 }

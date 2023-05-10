@@ -1,3 +1,4 @@
+import { ar, pistol, rpg } from "../guns/guns.mjs";
 import { Bullet } from "../guns/setup/gun.mjs";
 import { canvas, coin, ctx } from "../important/data.mjs";
 import { mouse } from "../mouse.mjs";
@@ -121,13 +122,13 @@ class Player {
       let x = Math.cos(angle) * speed;
       let y = Math.sin(angle) * speed;
 
-      this.weapon.bullets.push(new Bullet(this.pos.x, this.pos.y, x, y));
+      this.weapon.bullets.push(new Bullet(this.pos.x, this.pos.y, x, y, this.weapon.spread, this.weapon.spread));
       this.weapon.ammo -= 1;
     }
   }
   stats() {
     ctx.fillStyle = "blue";
-    ctx.fillText("Gun", this.pos.x, this.pos.y - 10);
+    ctx.fillText(this.weapon.name, this.pos.x, this.pos.y - 10);
     ctx.fillStyle = "yellow";
     ctx.fillText("ammo: " + this.weapon.ammo, this.pos.x, this.pos.y + 0);
     ctx.fillStyle = "yellow";
@@ -158,5 +159,27 @@ function clickDHandler() {
 function clickUHandler() {
   clearInterval(player.it);
 }
+let num = 0
+function WeaponChange(e){
+  let weapons = [ar,rpg,pistol]
+  if(e.key === "q"){
+    num-=1
+    if(num < 0){
+      num = weapons.length-1
+    } else 
+    {
+    player.weapon = weapons[num]
+    }
+  }
+  if(e.key === "e"){
+    num+=1
 
-export { player, clickDHandler, clickUHandler};
+    if(num > weapons.length-1){
+      num = 0
+    } else 
+    {
+    player.weapon = weapons[num]
+    }
+  }
+}
+export { player, clickDHandler, clickUHandler, WeaponChange};
